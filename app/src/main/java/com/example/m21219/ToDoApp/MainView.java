@@ -1,15 +1,12 @@
-package com.example.m21219.logintest;
+package com.example.m21219.ToDoApp;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,18 +19,13 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import android.os.Environment;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.FileOutputStream;
 import java.io.FileInputStream;
 
 /* Diese Activity wird aufgerufen, wenn der Benutzer richtige Userdaten eingegeben hat und zeigt eine ListView, bei der

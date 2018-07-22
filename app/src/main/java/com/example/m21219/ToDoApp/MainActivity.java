@@ -1,4 +1,4 @@
-package com.example.m21219.logintest;
+package com.example.m21219.ToDoApp;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,21 +11,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.prefs.Preferences;
-
 /*Diese Klasse ist für die Loginfunktion zuständig, beinhaltet die User und Passwörter und vergleicht
 sie mit den eingegebenen Werten*/
 public class MainActivity extends AppCompatActivity {
 
     public static final String UserID = "";
-    SQLiteDatabase myDB=null;
+    SQLiteDatabase myDB = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-         //SQLiteDatenbank anlegen und mit Usern und Tasks füllen
+        //SQLiteDatenbank anlegen und mit Usern und Tasks füllen
         try {
             myDB = this.openOrCreateDatabase("IUBHtoDoApp", MODE_PRIVATE, null);
             myDB.execSQL("CREATE TABLE IF NOT EXISTS Users (id INTEGER PRIMARY KEY,name VARCHAR, password VARCHAR)");
@@ -36,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
             myDB.execSQL("INSERT INTO Tasks (id, name, description, userid) VALUES (NULL,'Task1', 'Das ist Task1',1)");
             myDB.execSQL("INSERT INTO Tasks (id, name, description, userid) VALUES (NULL,'Task2', 'Das ist Task2',1)");
 
-        }
-        catch(Exception e) {
+        } catch (Exception e) {
             Log.e("Error", "Error", e);
         }
 
@@ -45,18 +42,18 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                final EditText editTextUserName =  (EditText) findViewById(R.id.txt_username);
-                final EditText editTextPassword =  (EditText) findViewById(R.id.txt_password);
+                final EditText editTextUserName = (EditText) findViewById(R.id.txt_username);
+                final EditText editTextPassword = (EditText) findViewById(R.id.txt_password);
 
                 // get The User name and Password
-                String userName=editTextUserName.getText().toString();
-                String password=editTextPassword.getText().toString();
+                String userName = editTextUserName.getText().toString();
+                String password = editTextPassword.getText().toString();
 
                 // fetch the Password form database for respective user name
-                Cursor cursor = myDB.rawQuery("SELECT id, password FROM Users where name='"+userName.trim()+"'", null);
+                Cursor cursor = myDB.rawQuery("SELECT id, password FROM Users where name='" + userName.trim() + "'", null);
 
                 try {
-                    if(cursor.getCount()<1) // UserName Not Exist
+                    if (cursor.getCount() < 1) // UserName Not Exist
                     {
                         cursor.close();
                         Toast toast = Toast.makeText(getApplicationContext(), "Unbekannter Username", Toast.LENGTH_LONG);
@@ -64,13 +61,12 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     cursor.moveToFirst();
-                    String strPassword= cursor.getString(cursor.getColumnIndex("password"));
+                    String strPassword = cursor.getString(cursor.getColumnIndex("password"));
                     String intUserID = cursor.getString(cursor.getColumnIndex("id"));
                     cursor.close();
 
                     // check if the Stored password matches with  Password entered by user
-                    if(password.equals(strPassword))
-                    {
+                    if (password.equals(strPassword)) {
                         Toast.makeText(getApplicationContext(), "Login Erfolgreich!", Toast.LENGTH_LONG).show();
 
                         //UserID Global setzen in Singleton Klasse
@@ -80,16 +76,14 @@ public class MainActivity extends AppCompatActivity {
                         Intent myIntent = new Intent(MainActivity.this, MainView.class);
                         myIntent.putExtra("UserName", userName);
                         MainActivity.this.startActivity(myIntent);
-                    }
-                    else
-                    {
+                    } else {
                         Toast.makeText(getApplicationContext(), "Nutzername oder Passwort ist nicht korrekt!", Toast.LENGTH_LONG).show();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    System.out.println(e.getMessage());
+                    System.out.println("Es ist ein Fehler aufgetreten: " + e.getMessage());
                 } finally {
-                    if(cursor != null){
+                    if (cursor != null) {
                         cursor.close();
                     }
                 }
@@ -97,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }

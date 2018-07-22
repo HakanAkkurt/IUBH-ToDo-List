@@ -1,4 +1,4 @@
-package com.example.m21219.logintest;
+package com.example.m21219.ToDoApp;
 
 /**
  * Created by lukas on 25.02.17.

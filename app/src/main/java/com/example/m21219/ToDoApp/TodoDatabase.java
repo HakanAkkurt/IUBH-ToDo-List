@@ -1,4 +1,4 @@
-package com.example.m21219.logintest;
+package com.example.m21219.ToDoApp;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,14 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.google.android.gms.maps.model.LatLng;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by Hakan Akkurt on 03.02.2017.

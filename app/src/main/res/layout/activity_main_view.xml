@@ -4,7 +4,7 @@
     android:id="@+id/activity_main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.m21219.logintest.MainView">
+    tools:context="com.example.m21219.ToDoApp.MainView">
 
     <TextView
         android:text="Die Seite nach dem Login"
