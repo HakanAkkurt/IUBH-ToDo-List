@@ -8,5 +8,4 @@ Eine Android-App, die für Anlegen, Anzeigen, Ändern und Löschen von ToDo`s ei
   <img src="https://github.com/HakanAkkurt/IUBH-ToDo-List/blob/master/app/src/main/res/Screenshots/Screenshot3.png" width="350">
   <img src="https://github.com/HakanAkkurt/IUBH-ToDo-List/blob/master/app/src/main/res/Screenshots/Screenshot4.png" width="350">
   <img src="https://github.com/HakanAkkurt/IUBH-ToDo-List/blob/master/app/src/main/res/Screenshots/Screenshot5.png" width="350">
- 
 </p>
